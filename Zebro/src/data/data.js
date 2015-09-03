@@ -6,6 +6,10 @@ var SQLite = require('react-native-sqlite');
 
 class Database {
   query(query, params, errorCB, rowCB, completeCB) {
+    var database = SQLite.open('development.db');
+
+    database.executeSQL(query, params, rowCB, completeCB);
+    /*
     SQLite.open('development.db', (error, database) => {
       if (error) {
         console.error('Failed to open  database: ', error);
@@ -28,6 +32,8 @@ class Database {
 
       database.executeSQL(query, params, rowCB, completeCallback);
     });
+
+    */
   }
 }
 
@@ -56,7 +62,8 @@ class Data {
       console.log(rowData);
     }
 
-    function completeCB() {
+    function completeCB(err) {
+      console.log(err);
       console.log('d-d-done!');
     }
 

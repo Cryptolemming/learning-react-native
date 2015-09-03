@@ -10,6 +10,6 @@ CREATE TABLE `cards` (
   `due_date` timestamp NOT NULL,
   PRIMARY KEY (`id`));
 
-CREATE TABLE `decks`(
-  `id` integer DEFAULT (NULL) NOT NULL PRIMARY KEY,
-  `name` text DEFAULT (NULL) NOT NULL);
+CREATE TABLE decks(
+  id integer DEFAULT (NULL) NOT NULL PRIMARY KEY,
+  name text DEFAULT (NULL) NOT NULL);
