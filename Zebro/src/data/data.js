@@ -34,7 +34,6 @@ class Database {
 class Data {
   constructor() {
 
-    Database.query('SELECT * FROM decks', [], errorCB, rowCB, completeCB);
 
     var d = new Deck('Esperanto Vocabulary');
     this.decks = [
@@ -47,6 +46,21 @@ class Data {
   }
 
   loadDecks() {
+
+    function errorCB(error) {
+      console.log('in errorCB w/ error: ', error);
+    }
+
+    function rowCB(rowData) {
+      console.log('zomg row data: ');
+      console.log(rowData);
+    }
+
+    function completeCB() {
+      console.log('d-d-done!');
+    }
+
+    (new Database()).query('SELECT * FROM decks', [], errorCB, rowCB, completeCB);
     return this.decks;
   }
 
